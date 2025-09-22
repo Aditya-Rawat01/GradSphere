@@ -13,8 +13,8 @@ const internships = Array.from({ length: 8 }).map((_, i) => ({
   duration: `${3 + (i % 3)} months`,
   deadline: `Nov ${20 + i}, 2025`,
 }))
-
-const useExpandableList = (items: any[], defaultVisible = 4) => {
+type internshipType = typeof internships
+const useExpandableList = (items: internshipType, defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }

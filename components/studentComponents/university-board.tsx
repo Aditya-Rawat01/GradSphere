@@ -11,8 +11,8 @@ const notices = Array.from({ length: 8 }).map((_, i) => ({
   category: i % 2 === 0 ? "Exams" : "Career",
   date: `Oct ${25 + i}, 2025`,
 }))
-
-const useExpandableList = (items: any[], defaultVisible = 4) => {
+type noticeType = typeof notices
+const useExpandableList = (items: noticeType, defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }
