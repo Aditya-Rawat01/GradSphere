@@ -30,7 +30,8 @@ const events: Event[] = Array.from({ length: 8 }).map((_, i) => ({
   link: "https://example.com/register",
 }))
 
-const useExpandableList = (items: any[], defaultVisible = 4) => {
+// ---------- Expandable List Hook ----------
+const useExpandableList = <T,>(items: T[], defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }

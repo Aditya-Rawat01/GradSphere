@@ -43,16 +43,16 @@ const mentors: Mentor[] = Array.from({ length: 8 }).map((_, i) => ({
   email: `mentor${i + 1}@example.com`,
   availability: i % 2 === 0 ? "Available" : "Busy",
 }))
-type mentorType = typeof mentors[0]
+
 // ---------- Helper Hook ----------
-const useExpandableList = (items: any[], defaultVisible = 4) => {
+const useExpandableList = <T,>(items: T[], defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }
 }
 
 // ---------- Mentor Profile Modal ----------
-const MentorProfileCard = ({ mentor, onClose }: { mentor: any; onClose: () => void }) => {
+const MentorProfileCard = ({ mentor, onClose }: MentorProfileCardProps) => {
   if (!mentor) return null
 
   return (
@@ -137,18 +137,14 @@ const MentorProfileCard = ({ mentor, onClose }: { mentor: any; onClose: () => vo
 
 // ---------- Main Component ----------
 export default function RecommendedMentors() {
-  const { visibleItems, showAll, setShowAll } = useExpandableList(mentors)
-  const [selectedMentor, setSelectedMentor] = useState<any | null>(null)
+  const { visibleItems, showAll, setShowAll } = useExpandableList<Mentor>(mentors)
+  const [selectedMentor, setSelectedMentor] = useState<Mentor | null>(null)
   const [requestedMentors, setRequestedMentors] = useState<Set<number>>(new Set())
 
   const toggleRequest = (id: number) => {
     setRequestedMentors((prev) => {
       const newSet = new Set(prev)
-      if (newSet.has(id)) {
-        newSet.delete(id)
-      } else {
-        newSet.add(id)
-      }
+      newSet.has(id) ? newSet.delete(id) : newSet.add(id)
       return newSet
     })
   }
