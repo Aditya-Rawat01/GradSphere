@@ -9,11 +9,15 @@ import {
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { GraduationCap, BookOpen, Building2 } from "lucide-react"
+import { useRouter } from "next/navigation"
 
-type UserType = "alumni" | "student" | "university" | null
+type UserType = "alumni" | "student" | "admin" | null
 
 export default function SignAs() {
-  const [selectedUserType, setSelectedUserType] = useState<UserType>(null)
+
+    const [selectedUserType, setSelectedUserType] = useState<UserType>(null)
+    const router=useRouter();
+
 
   const userTypes: { id: Exclude<UserType, null>; label: string; description: string; icon: React.ElementType }[] = [
     {
@@ -29,8 +33,9 @@ export default function SignAs() {
       icon: BookOpen,
     },
     {
-      id: "university",
-      label: "Sign up as University",
+
+      id: "admin" as const,
+      label: "Sign up as Admin",
       description: "Manage your institution and connect with students",
       icon: Building2,
     },
@@ -119,17 +124,15 @@ export default function SignAs() {
                 })}
               </div>
 
-              {/* Continue CTA */}
-              {selectedUserType && (
-                <div className="text-center">
-                  <Button
-                    className="px-12 py-4 text-lg font-semibold bg-black hover:bg-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    aria-label={`Continue as ${selectedUserType}`}
-                  >
-                    Continue as {selectedUserType.charAt(0).toUpperCase() + selectedUserType.slice(1)}
-                  </Button>
-                </div>
-              )}
+
+        {selectedUserType && (
+          <div className="text-center">
+            <Button className="px-12 py-4 text-lg font-semibold bg-black hover:bg-gray-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" onClick={()=>router.push(`/auth/role/${selectedUserType}`)}>
+              Continue as {selectedUserType.charAt(0).toUpperCase() + selectedUserType.slice(1)}
+            </Button>
+          </div>
+        )}
+
 
               {/* Sign in link */}
               <div className="text-center">

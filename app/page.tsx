@@ -1,4 +1,4 @@
-// app/page.tsx
+
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Image from "next/image"
@@ -13,14 +13,13 @@ import StudentDashboard from "@/components/Dashboards/studentDashboard"
 export default function Home() {
   return (
     <div className="w-screen h-full">
-      {/* Uncomment whichever component you’re working on */}
-      {/* <Homepage /> */}
-      {/* <Signup /> */}
-      {/* <Signin /> */}
-      <StudentDashboard />
-      {/* <UniversityDashboard /> */}
-      {/* <AlumniDashboard /> */}
-      {/* <SignAs /> */}
+      {/* {<Homepage/>} */}
+      {/* <Signup/> */}
+      {/* <SignAs/> */}
+      {/* <StudentDashboard/> */}
+      {/* <UniversityDashboard/> */}
+      {/* {<AlumniDashboard/>} */}
+
     </div>
   )
 }
