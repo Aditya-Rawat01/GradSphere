@@ -3,6 +3,7 @@ import AlumniDashboard from "@/components/Dashboards/alumniDashboard";
 import StudentDashboard from "@/components/Dashboards/studentDashboard";
 import UniversityDashboard from "@/components/Dashboards/universityDashboard";
 import Homepage from "@/components/homepage";
+import SignAs from "@/components/SignComponents/signAs";
 // import Signin from "@/components/SignComponents/Signin";
 // import Signup from "@/components/SignComponents/Signup";
 export default function Home() {
@@ -13,8 +14,8 @@ export default function Home() {
       {/* <Signup/> */}
       {/* <Signin/> */}
       {/* <StudentDashboard/> */}
-      <UniversityDashboard/>
-      {/* {<AlumniDashboard/>} */}
+      {/* <UniversityDashboard/> */}
+      {<AlumniDashboard/>}
 
     </div>
   );
