@@ -13,8 +13,8 @@ export default function Home() {
       {/* <Signup/> */}
       {/* <Signin/> */}
       {/* <StudentDashboard/> */}
-      {/* <UniversityDashboard/> */}
-      {<AlumniDashboard/>}
+      <UniversityDashboard/>
+      {/* {<AlumniDashboard/>} */}
 
     </div>
   );
