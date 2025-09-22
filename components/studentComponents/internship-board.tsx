@@ -26,8 +26,7 @@ const internships: Internship[] = Array.from({ length: 8 }).map((_, i) => ({
   deadline: `Nov ${20 + i}, 2025`,
 }))
 
-// ---------- Expandable List Hook ----------
-const useExpandableList = <T,>(items: T[], defaultVisible = 4) => {
+const useExpandableList = (items: any[], defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }
