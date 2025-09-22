@@ -45,9 +45,9 @@ export default function AlumniForm() {
     router.push("/Dashboards/Alumni");
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+    <div className="flex justify-center items-center min-h-screen bg-pattern">
       <Toaster/>
-      <Card className="w-full max-w-md p-2 shadow-lg">
+     <Card className="w-full max-w-md p-2 border border-gray-200/80 bg-white/95 shadow-xl  shadow-black/20 backdrop-blur-sm">
         <CardHeader>
           {/* Back Button that links to the role selection page */}
           <Link href="/auth/select-role" className="flex items-center gap-2 text-sm text-gray-600 hover:text-black transition-colors w-fit">

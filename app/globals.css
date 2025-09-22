@@ -121,6 +121,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+.bg-pattern {
+  background-color: #fffafa; /* A warmer off-white (color name: "snow") */
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EGeometric Pattern%3C/title%3E%3Crect x='0' y='0' width='24' height='24' fill='%23fffafa'/%3E%3Cg fill='%23f2e9ec'%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
 
 @layer base {
   * {
