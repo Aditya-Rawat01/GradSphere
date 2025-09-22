@@ -8,10 +8,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 
+// ---------- Types ----------
+type Student = {
+  name: string
+  avatarUrl: string
+  email: string
+  phone: string
+  enrollment: string
+  course: string
+  year: string
+  bio: string
+  skills: string[]
+  interests: string[]
+}
+
 export default function ProfileSection() {
   const [editMode, setEditMode] = useState(false)
 
-  const [student, setStudent] = useState({
+  const [student, setStudent] = useState<Student>({
     name: "Riya Sharma",
     avatarUrl: "/student-profile.png",
     email: "riya.sharma@example.com",
@@ -24,10 +38,10 @@ export default function ProfileSection() {
     interests: ["Hackathons", "Open Source", "Product Design"],
   })
 
-  const [formData, setFormData] = useState(student)
+  const [formData, setFormData] = useState<Student>(student)
 
-  const handleChange = (field: string, value: string | string[]) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+  const handleChange = (field: keyof Student, value: string | string[]) => {
+    setFormData((prev) => ({ ...prev, [field]: value } as Student))
   }
 
   const handleSave = () => {
@@ -39,6 +53,8 @@ export default function ProfileSection() {
     setFormData(student)
     setEditMode(false)
   }
+
+  const hasChanges = JSON.stringify(student) !== JSON.stringify(formData)
 
   return (
     <Card>
@@ -137,13 +153,18 @@ export default function ProfileSection() {
           {editMode ? (
             <Input
               value={formData.skills.join(", ")}
-              onChange={(e) => handleChange("skills", e.target.value.split(",").map((s) => s.trim()))}
+              onChange={(e) =>
+                handleChange(
+                  "skills",
+                  e.target.value.split(",").map((s) => s.trim())
+                )
+              }
               placeholder="Comma separated skills"
             />
           ) : (
             <div className="flex flex-wrap gap-2 mt-1">
-              {student.skills.map((s, i) => (
-                <Badge key={i} variant="secondary">
+              {student.skills.map((s) => (
+                <Badge key={s} variant="secondary">
                   {s}
                 </Badge>
               ))}
@@ -158,14 +179,17 @@ export default function ProfileSection() {
             <Input
               value={formData.interests.join(", ")}
               onChange={(e) =>
-                handleChange("interests", e.target.value.split(",").map((i) => i.trim()))
+                handleChange(
+                  "interests",
+                  e.target.value.split(",").map((i) => i.trim())
+                )
               }
               placeholder="Comma separated interests"
             />
           ) : (
             <div className="flex flex-wrap gap-2 mt-1">
-              {student.interests.map((i, idx) => (
-                <Badge key={idx} className="bg-indigo-100 text-indigo-600">
+              {student.interests.map((i) => (
+                <Badge key={i} className="bg-indigo-100 text-indigo-600">
                   {i}
                 </Badge>
               ))}
@@ -176,7 +200,7 @@ export default function ProfileSection() {
         {/* Actions */}
         {editMode ? (
           <div className="flex gap-2">
-            <Button size="sm" onClick={handleSave}>
+            <Button size="sm" onClick={handleSave} disabled={!hasChanges}>
               Save
             </Button>
             <Button variant="outline" size="sm" onClick={handleCancel}>
