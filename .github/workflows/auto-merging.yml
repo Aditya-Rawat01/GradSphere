@@ -1,0 +1,41 @@
+name: CI pipeline for auto-merging
+
+on:
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    validate-and-merge:
+        runs-on: ubuntu-latest
+        
+        permissions:
+            contents: write
+            pull-requests: write
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: setup nodejs environment
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+                cache: 'npm'
+            
+            - name: Install the dependencies
+              run: npm ci
+
+            - name: Lint code
+              run: npm run lint
+
+            - name: Build project
+              run: npm run build
+            
+            - name: Auto-Merge PR
+              env:
+                GH_TOKEN: ${{ github.token }}
+                PR_NUMBER: ${{github.event.pull_request.number}}
+                REPO: ${{github.repository}}
+              run: |
+                echo "All Checks passed, Merging PR #${PR_NUMBER} with main branch"
+                gh pr merge --auto --merge --repo $REPO $PR_NUMBER
