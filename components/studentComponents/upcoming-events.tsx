@@ -14,8 +14,8 @@ const events = Array.from({ length: 8 }).map((_, i) => ({
   description: i % 2 === 0 ? "Hands-on workshop on AI and React." : "Panel discussion with industry leaders.",
   link: "https://example.com/register",
 }))
-
-const useExpandableList = (items: any[], defaultVisible = 4) => {
+type eventType = typeof events
+const useExpandableList = (items: eventType, defaultVisible = 4) => {
   const [showAll, setShowAll] = useState(false)
   const visibleItems = showAll ? items : items.slice(0, defaultVisible)
   return { visibleItems, showAll, setShowAll }
