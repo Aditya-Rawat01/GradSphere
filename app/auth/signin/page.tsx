@@ -4,7 +4,7 @@ import { Toaster } from 'sonner'
 
 export default function  signinpage()  {
   return (
-    <div className='w-full min-h-screen flex justify-center items-center'>
+    <div className='flex justify-center items-center min-h-screen bg-pattern'>
       <Toaster/>
     <Signin/>
     </div>
