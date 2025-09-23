@@ -4,6 +4,7 @@
 import Image from "next/image"
 // import AlumniDashboard from "@/components/Dashboards/alumniDashboard"
 import StudentDashboard from "@/components/Dashboards/studentDashboard"
+import UniversityDashboard from "@/components/Dashboards/universityDashboard"
 // import UniversityDashboard from "@/components/Dashboards/universityDashboard"
 // import Homepage from "@/components/homepageComponents/homepage"
 
