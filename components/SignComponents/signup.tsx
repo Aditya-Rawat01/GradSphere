@@ -12,13 +12,23 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link  from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export function Signup() {
-    const [email,setemail]=useState("")
+     const [email,setemail]=useState("")
     const [password,setpassword]=useState("")
+    const router =useRouter();
+    const handlesubmission=()=>{
+      if(!email ||!password){
+        return toast.error("please fill in the details");
+      }
+      toast("user signedup succesfully");
+      router.push("/auth/signin")
+    }
   return (
-    <Card className="w-full max-w-sm " >
+    <Card className="w-full max-w-md p-2 border border-gray-200/80 bg-white/95 shadow-xl  shadow-black/20 backdrop-blur-sm " >
       <CardHeader>
         <h1 className="font-bold text-2xl text-center">GradSphere</h1>
         <CardTitle>Signup to your account</CardTitle>
@@ -61,7 +71,7 @@ export function Signup() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" onClick={handlesubmission}>
           Signup
         </Button>
         <Button variant="outline" className="w-full">

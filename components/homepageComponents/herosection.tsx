@@ -1,7 +1,10 @@
+"use client"
 import React from "react";
 import heroImg from "./hero.jpg";
+import { useRouter } from "next/navigation";
 
 const HeroSection : React.FC= () => {
+  const router=useRouter();
   return (
     <section className="relative bg-background text-foreground py-20 flex flex-col md:flex-row items-center justify-center px-6 md:px-20">
       
@@ -13,7 +16,7 @@ const HeroSection : React.FC= () => {
         <p className="text-lg mb-6 text-gray-700">
           Connecting alumni, students, and opportunities. Explore mentorship, internships, events, and more — all in one place.
         </p>
-        <button className="px-6 py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 transition">
+        <button className="px-6 py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 transition cursor-pointer"  onClick={()=>router.push("/auth/signin")}>
           Get Started
         </button>
       </div>

@@ -22,13 +22,13 @@ export function Signin() {
     const router =useRouter();
     const handlesubmission=()=>{
       if(!email ||!password){
-        return toast("please fill in the details");
+        return toast.error("please fill in the details");
       }
       toast("user signedin succesfully");
       router.push("/auth/select-role")
     }
   return (
-     <Card className="w-full max-w-sm">
+     <Card className="w-full max-w-md p-2 border border-gray-200/80 bg-white/95 shadow-xl  shadow-black/20 backdrop-blur-sm">
       <CardHeader>
          <h1 className="font-bold text-2xl text-center">GradSphere</h1>
         <CardTitle>Login to your account</CardTitle>
