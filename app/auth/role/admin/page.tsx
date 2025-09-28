@@ -13,11 +13,11 @@ import { Toaster} from "sonner";
 
 export default function UniversityForm() {
   const router = useRouter();
-  const [universityName, setUniversityName] = useState("");
-  const [affiliation, setAffiliation] = useState("");
-  const [place, setPlace] = useState("");
+  const [universityName, setUniversityName] = useState("Bharati Vidyapeeth");
+  const [affiliation, setAffiliation] = useState("Indraprastha University");
+  const [place, setPlace] = useState("Delhi");
   const [letterFromDean, setLetterFromDean] = useState<File | null>(null);
-  const [identityProof, setIdentityProof] = useState("");
+  const [identityProof, setIdentityProof] = useState("proof");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function UniversityForm() {
       !universityName.trim() ||
       !affiliation.trim() ||
       !place.trim() ||
-      !letterFromDean ||
+      // !letterFromDean ||                    **************************** to be correct again *************************
       !identityProof.trim()
     ) {
       toast.error("Please fill all the fields.");
@@ -37,7 +37,7 @@ export default function UniversityForm() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <Toaster/>
-      <Card className="w-full max-w-md p-8 shadow-lg">
+      <Card className="w-full max-w-md p-5 shadow-lg">
         <CardHeader>
           {/* Back Button that links to the role selection page */}
           <Link href="/auth/select-role" className="flex items-center gap-2 text-sm text-gray-600 hover:text-black transition-colors w-fit">
@@ -47,7 +47,7 @@ export default function UniversityForm() {
           {/* Form Heading */}
           <CardTitle className="text-2xl pt-2">Admin Registration</CardTitle>
           <CardDescription>
-            Please fill in your details to complete your profile.
+            All the details are filled already for prototype navigation.
           </CardDescription>
         </CardHeader>
         <CardContent>

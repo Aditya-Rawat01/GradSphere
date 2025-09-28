@@ -14,18 +14,18 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Toaster} from "sonner";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Info } from "lucide-react";
 
 export default function AlumniForm() {
   const router = useRouter();
-  const [rollNumber, setRollNumber] = useState("");
-  const [department, setDepartment] = useState("");
-  const [course, setCourse] = useState("");
-  const [admissionYear, setAdmissionYear] = useState("");
-  const [graduationYear, setGraduationYear] = useState("");
+  const [rollNumber, setRollNumber] = useState("00167589");
+  const [department, setDepartment] = useState("Information Technology");
+  const [course, setCourse] = useState("B.Tech");
+  const [admissionYear, setAdmissionYear] = useState("2020");
+  const [graduationYear, setGraduationYear] = useState("2024");
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
-  const [currentWork, setCurrentWork] = useState("");
-  const [linkedin, setLinkedin] = useState("");
+  const [currentWork, setCurrentWork] = useState("SDE-1");
+  const [linkedin, setLinkedin] = useState("http://bit.ly");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ export default function AlumniForm() {
       !course.trim() ||
       !admissionYear.trim() ||
       !graduationYear.trim() ||
-      !profilePhoto ||
+      // !profilePhoto ||                       **************************** to be correct again *************************
       !currentWork.trim() ||
       !linkedin.trim()
     ) {
@@ -58,9 +58,10 @@ export default function AlumniForm() {
           {/* Form Heading */}
           <CardTitle className="text-2xl pt-2">Alumni Registration</CardTitle>
           <CardDescription>
-            Please fill in your details to complete your profile.
+            All the details are filled already for prototype navigation.
           </CardDescription>
         </CardHeader>
+
         <CardContent>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>

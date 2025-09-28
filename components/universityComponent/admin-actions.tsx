@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
 const pendingUsers = [
   { id: 1, name: "Riya Sharma", type: "Student" },
@@ -25,7 +26,7 @@ export default function AdminActions() {
               <p className="text-sm text-muted-foreground">{u.type}</p>
             </div>
             <div className="flex gap-2">
-              <Button size="sm">Approve</Button>
+              <Button size="sm" onClick={()=>toast.success("User will be added successfully")}>Approve</Button>
               <Button variant="outline" size="sm">
                 Reject
               </Button>

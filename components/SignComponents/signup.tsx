@@ -11,14 +11,16 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Info } from "lucide-react"
 import Link  from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "sonner"
 
 export function Signup() {
-     const [email,setemail]=useState("")
-    const [password,setpassword]=useState("")
+  // for ease in signup
+     const [email,setemail]=useState("m@example.com")
+    const [password,setpassword]=useState("password")
     const router =useRouter();
     const handlesubmission=()=>{
       if(!email ||!password){
@@ -74,9 +76,10 @@ export function Signup() {
         <Button type="submit" className="w-full" onClick={handlesubmission}>
           Signup
         </Button>
-        <Button variant="outline" className="w-full">
+        <Button variant="outline" className="w-full" onClick={()=>toast.info("Implementing google login soon...")}>
           Signup with Google
         </Button>
+        <div className="flex gap-2 text-center text-sm"><Info/> For ease in signup, default values are put in the input field, just click signup.</div>
       </CardFooter>
     </Card>
   )
