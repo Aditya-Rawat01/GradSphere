@@ -33,6 +33,9 @@ body {
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  overflow-x: hidden;
+}
 :root {
   /* Updated color tokens to match alumni dashboard design brief */
   --background: #ffffff;

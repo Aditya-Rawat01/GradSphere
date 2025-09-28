@@ -13,11 +13,11 @@ import { Toaster} from "sonner";
 
 export default function StudentForm() {
   const router = useRouter();
-  const [rollNumber, setRollNumber] = useState("");
-  const [department, setDepartment] = useState("");
-  const [course, setCourse] = useState("");
-  const [admissionYear, setAdmissionYear] = useState("");
-  const [graduationYear, setGraduationYear] = useState("");
+  const [rollNumber, setRollNumber] = useState("02878281");
+  const [department, setDepartment] = useState("Information Technology");
+  const [course, setCourse] = useState("B.Tech");
+  const [admissionYear, setAdmissionYear] = useState("2025");
+  const [graduationYear, setGraduationYear] = useState("2029");
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,8 +27,9 @@ export default function StudentForm() {
       !department.trim() ||
       !course.trim() ||
       !admissionYear.trim() ||
-      !graduationYear.trim() ||
-      !profilePhoto
+      !graduationYear.trim() 
+
+      // || !profilePhoto                                **************************** to be correct again *************************
     ) {
       toast.error("Please fill all the fields.");
       return;
@@ -39,7 +40,7 @@ export default function StudentForm() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <Toaster/>
-      <Card className="w-full max-w-md p-8 shadow-lg">
+      <Card className="w-full max-w-md p-5 shadow-lg">
          <CardHeader>
           {/* Back Button that links to the role selection page */}
           <Link href="/auth/select-role" className="flex items-center gap-2 text-sm text-gray-600 hover:text-black transition-colors w-fit">
@@ -49,7 +50,7 @@ export default function StudentForm() {
           {/* Form Heading */}
           <CardTitle className="text-2xl pt-2">Student Registration</CardTitle>
           <CardDescription>
-            Please fill in your details to complete your profile.
+            All the details are filled already for prototype navigation.
           </CardDescription>
         </CardHeader>
         <CardContent>
